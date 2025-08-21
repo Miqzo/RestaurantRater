@@ -9,8 +9,11 @@ namespace RestaurantRater.Maui
         public MainPage()
         {
             InitializeComponent();
+
             _viewModel = new RestaurantViewModel();
             BindingContext = _viewModel;
+
+            // Load the list initially
             Loaded += MainPage_Loaded;
         }
 
