@@ -1,24 +1,22 @@
-﻿namespace RestaurantRater.Maui
+﻿using RestaurantRater.Maui.ViewModels;
+
+namespace RestaurantRater.Maui
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
+        private RestaurantViewModel _viewModel;
+        
         public MainPage()
         {
             InitializeComponent();
+            _viewModel = new RestaurantViewModel();
+            BindingContext = _viewModel;
+            Loaded += MainPage_Loaded;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void MainPage_Loaded(object? sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            await _viewModel.LoadRestaurants();
         }
     }
 
