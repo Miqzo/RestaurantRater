@@ -41,9 +41,10 @@ public class Restaurant
     [MaxLength(200)]
     public string Review { get; set; } = string.Empty;
 
-    //Additional rating, not calculated into the average, nullable due to not everyone having children
+    //Additional rating, not calculated into the average
     [Range(1,5)]
     public int ChildFriendlyScore { get; set; } //How child-friendly the restaurant is, if applicable
+                                                //Nullable as not everyone has children or cares about this aspect        
 
     //Calculated average score, calculated at runtime as the ratings are updated
     [NotMapped]
